@@ -1,0 +1,50 @@
+.Login {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.Wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 420px;
+    padding: 20px;
+    background-color: var(--color-light);
+    box-sizing: border-box;
+}
+
+.Labels {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Labels label {
+    font-size: 1.6rem;
+    margin: 8px 0px;
+}
+
+.Labels input {
+    padding: 0px 8px;
+    height: 35px;
+    border: none;
+    background-color: var(--color-complementary);
+}
+
+
+.ButtonWrapper {
+    width: 100%;
+}
+
+.ButtonWrapper button {
+    margin-top: 8px;
+    padding: 0px 8px;
+    height: 35px;
+    width: 100%;
+    border: none;
+    background-color: var(--color-base);
+    color: var(--color-complementary);
+    font-size: 1.6rem;
+}

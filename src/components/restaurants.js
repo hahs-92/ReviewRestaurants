@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 
 import RestaurantDataService from '../services/restaurant'
 
+//ESTILOS
+import styles from '../styles/components/restaurants.module.css'
+
 export const Restaurants = (props) => {
     const initialRestaurantState = {
         id: null,
@@ -40,24 +43,32 @@ export const Restaurants = (props) => {
             .catch(e => console.error(e))
     }    
     return(
-        <section>
+        <>
             {
                 restaurant ? (
-                    <div>
-                        <h5>{ restaurant.name }</h5>
-                        <p>
-                            <strong>Cuisine: </strong>{ restaurant.cuisine } <br/>
-                            <strong>Address: </strong>{ restaurant.address.building } { restaurant.address.street }, { restaurant.address.zipcode }
-                        </p>
-                        <Link to={ '/restaurants/' + props.match.params.id + "/review" }>
-                            Add Review
-                        </Link>
-                        <h4>Reviews</h4>
-                        <div>
+                    <article className={ styles.Card } >
+                        <section className={ styles.CardWrapper }>
+                            <div>
+                                <h3>{ restaurant.name }</h3>
+                                <p>
+                                    <strong>Cuisine: </strong>{ restaurant.cuisine } <br/>
+                                    <strong>Address: </strong>{ restaurant.address.building } { restaurant.address.street }, { restaurant.address.zipcode }
+                                </p>
+                            </div>
+                            <div className={ styles.Button }>
+                                <Link to={ '/restaurants/' + props.match.params.id + "/review" }>
+                                    Add Review
+                                </Link>
+                            </div>
+                        </section>
+
+                        <h3>Reviews</h3>
+
+                        <section className={ styles.Reviews }>
                             { restaurant.reviews.length > 0 ? (
                                 restaurant.reviews.map((review, index) => {
                                     return(
-                                        <div key={ index }>
+                                        <article key={ index } className={ styles.ReviewCard }>
                                             <div>
                                                 <div>
                                                     <p>
@@ -65,21 +76,24 @@ export const Restaurants = (props) => {
                                                         <strong>User: </strong>{ review.name } <br/>
                                                         <strong>Date: </strong>{ review.date }
                                                     </p>
-                                                    { props.user && props.user.id === review.user_id &&
-                                                        <div>
-                                                            <a onClick={ () => deleteReview(review._id, index) }>Delete</a>
-                                                            <Link to={{
-                                                                pathname: '/restaurants/' + props.match.params.id + '/review',
-                                                                state: {
-                                                                    currentReview: review
-                                                                }
-                                                            }}>Edit</Link>
-                                                        </div>
-                                                    }
                                                 </div>
+                                                { props.user && props.user.id === review.user_id &&
+                                                    <div className={ styles.Button }>
+                                                    
+                                                        <Link to={{
+                                                            pathname: '/restaurants/' + props.match.params.id + '/review',
+                                                            state: {
+                                                                currentReview: review
+                                                            }
+                                                        }}>Edit</Link>
+
+                                                        <a onClick={ () => deleteReview(review._id, index) }>Delete</a>
+                                                    </div>
+                                                }
+                                                
 
                                             </div>
-                                        </div>
+                                        </article>
                                     )
                                 })
                             ) : (
@@ -87,8 +101,8 @@ export const Restaurants = (props) => {
                                     <p>No reviews yet</p>
                                 </div>
                             )}
-                        </div>
-                    </div>
+                        </section>
+                    </article>
                 ) : (
                     <div>
                         <br/>
@@ -96,7 +110,7 @@ export const Restaurants = (props) => {
                     </div>
                 )
             }
-        </section>
+        </>
         
     )
 }

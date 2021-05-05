@@ -1,0 +1,42 @@
+.AddReview {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.AddReviewWrapper {
+    width: 90%;
+    max-width: 420px;
+    background-color: var(--color-light);
+    padding: 20px 12px;
+}
+
+.Inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.Inputs label {
+    font-size: 1.6rem;
+    margin: 8px 0px;
+    color: var(--color-dark);
+}
+
+.Inputs input {
+    height: 35px;
+    padding: 0px 8px;
+    border: none;
+}
+
+.Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: none;
+    margin-top: 12px;
+    height: 35px;
+    background-color: var(--color-base);
+    color: var(--color-complementary);
+    font-size: 1.6rem;
+}

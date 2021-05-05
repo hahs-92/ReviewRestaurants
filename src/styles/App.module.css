@@ -1,0 +1,22 @@
+.Nav {
+    width: 100%;
+    height: 120px;
+    background-color: var(--color-base);
+}
+
+.Wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.Wrapper li a {
+    font-size: 2rem;
+    color: var(--color-dark);
+    cursor: pointer;
+}
+

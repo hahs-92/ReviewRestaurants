@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 //COMPONENTS
 import RestaurantDataService from '../services/restaurant'
 
+//ESTILOS
+import styles from '../styles/components/restaurants-list.module.css'
+
 
 export const RestaurantsList = (props) => {
     const [ restaurants, setRestaurants ] = useState([])
@@ -11,6 +14,7 @@ export const RestaurantsList = (props) => {
     const [ searchZip, setSearchZip ] = useState('')
     const [ searchCuisine, setSearchCuisine ] = useState('')
     const [ cuisines, setCuisines ] = useState(['All Cuisines'])
+    const [ loading, setLoading ] = useState(false)
 
     useEffect(() => {
         retrieveRestaurants()
@@ -35,8 +39,9 @@ export const RestaurantsList = (props) => {
     const retrieveRestaurants = () => {
         RestaurantDataService.getAll()
             .then(response => {
-                console.log("DATA: ", response.data)
+                // console.log("DATA: ", response.data)
                 setRestaurants(response.data.restaurants)
+                setLoading(true)
             })
             .catch(e => console.error(e))
     }
@@ -44,7 +49,7 @@ export const RestaurantsList = (props) => {
     const retrieveCuisines = () => {
         RestaurantDataService.getCuisines()
             .then(response => {
-                console.log("CUISINES: ", response.data)
+                // console.log("CUISINES: ", response.data)
                 setCuisines(['All Cuisines'].concat(response.data))
             })
             .catch(e => console.error(e))
@@ -57,7 +62,7 @@ export const RestaurantsList = (props) => {
     const find = (query, by) => {
         RestaurantDataService.find(query, by)
             .then(response => {
-                console.log(response.data)
+                // console.log(response.data)
                 setRestaurants(response.data.restaurants)
             })
             .catch(e => console.error(e))
@@ -80,9 +85,9 @@ export const RestaurantsList = (props) => {
     }
 
     return(
-        <section>
-            <section>
-                <div>
+        <article className={ styles.Restaurants }>
+            <section className={ styles.Wrapper } >
+                <div className={ styles.InputWrapper }>
                     <input 
                         type="text"
                         placeholder='Search by name'
@@ -91,7 +96,7 @@ export const RestaurantsList = (props) => {
                     />
                 </div>
 
-                <div>
+                <div className={ styles.ButtonWrapper }>
                     <button 
                         type='button'
                         onClick={ findByName }
@@ -101,52 +106,60 @@ export const RestaurantsList = (props) => {
                 </div>
             </section>
 
-            <section>
-                <input 
-                    type="text"
-                    placeholder='Search by zip'
-                    value={ searchZip }
-                    onChange={ onChangeSearchZip }
-                />
-                <div>
+            {/* <section className={ styles.Wrapper }>
+                <div className={ styles.InputWrapper }>
+                    <input 
+                        type="text"
+                        placeholder='Search by zip'
+                        value={ searchZip }
+                        onChange={ onChangeSearchZip }
+                    />
+                </div>
+                <div className={ styles.ButtonWrapper }>
                     <button type='button' onClick={ findByZip }>
                         Search
                     </button>
                 </div>
-            </section>
+            </section> */}
 
-            <section>
-                <select onChange={ onChangeSearchCuisine }>
-                    {
-                        cuisines.map(cuisine => {
-                            return (
-                                <option key={ cuisine } value={ cuisine }>
-                                    { cuisine.substr(0, 20) }
-                                </option>
-                            )
-                        })
-                    }
-                </select>
-                <div>
+            {/* <section  className={ styles.Wrapper }>
+                <div className={ styles.SelectWrapper }>
+                    <select onChange={ onChangeSearchCuisine } >
+                        {
+                            cuisines.map(cuisine => {
+                                return (
+                                    <option key={ cuisine } value={ cuisine }>
+                                        { cuisine.substr(0, 20) }
+                                    </option>
+                                )
+                            })
+                        }
+                    </select>
+                </div>
+                <div className={ styles.ButtonWrapper }>
                     <button type='button' onClick={ findByCuisine }>
                         Search
                     </button>
                 </div>
-            </section>
+            </section> */}
 
-            <section>
-                {
-                    restaurants.map((restaurant => {
-                        const address = `${ restaurant.address.building } ${ restaurant.address.street }, ${ restaurant.address.zipcode }`
-                        return(
-                            <div key={ restaurant._id }>
-                                <div>
+            {
+                loading ?
+                <section className={ styles.WrapperList }>
+                    {
+                        restaurants.map((restaurant => {
+                            const address = `${ restaurant.address.building } ${ restaurant.address.street }, ${ restaurant.address.zipcode }`
+                            return(
+                                <article key={ restaurant._id } className={ styles.Card }>
+                                    
                                     <div>
-                                        <h5>{ restaurant.name }</h5>
-                                        <p> <strong>Cuisine: </strong>{ restaurant.cuisine } <br/>
-                                            <strong>Address: </strong>{ address }
-                                        </p>
-                                        <div>
+                                        <div >
+                                            <h2>{ restaurant.name }</h2>
+                                            <p> <strong>Cuisine: </strong>{ restaurant.cuisine } <br/>
+                                                <strong>Address: </strong>{ address }
+                                            </p>
+                                        </div>
+                                        <div className={ styles.Buttons }>
                                             <Link to={ "/restaurants/"+restaurant._id }>
                                                 View Reviews
                                             </Link>
@@ -155,12 +168,16 @@ export const RestaurantsList = (props) => {
                                             </a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        )
-                    }))
-                }
-            </section>
-        </section>
+                                
+                                </article>
+                            )
+                        }))
+                    }
+                </section>
+                : 
+                    <h1>Loading....</h1>
+            }
+
+        </article>
     )
 }

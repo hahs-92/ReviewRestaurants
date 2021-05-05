@@ -1,0 +1,93 @@
+.Restaurants {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.Wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 12px 8px;
+    width: 100%;
+    max-width: 420px;
+}
+
+.InputWrapper {
+    width: 100%;
+}
+
+.InputWrapper input {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 35px;
+    border: none;
+    cursor: pointer;
+}
+
+.ButtonWrapper {
+    width: 100%;
+}
+
+.ButtonWrapper button {
+    width: 100%;
+    height: 35px;
+    background-color: var(--color-base);
+    color: var(--color-complementary);
+    border: none;
+    cursor: pointer;
+}
+
+.SelectWrapper {
+    width: 100%;
+}
+
+.SelectWrapper select {
+    width: 100%;
+    height: 35px;
+    border: none;
+    padding: 0px 8px;
+}
+
+.SelectWrapper select option {
+    border: 1px solid violet;
+    background-color: var(--color-light);
+}
+
+.WrapperList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.Card {
+    padding: 8px;
+    margin: 12px 0px;
+    width: 90%;
+    max-width: 420px;
+    background-color: var(--color-light);
+}
+
+.Buttons {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48%;
+    height: 100%;
+    font-size: 1.6rem;
+    background-color: var(--color-base);
+    color: var(--color-complementary);
+}
+
+.Buttons :last-child {
+    background-color: var(--color-complementary);
+    color: var(--dark);
+}

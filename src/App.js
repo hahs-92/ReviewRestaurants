@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import { Link, Switch, Route } from 'react-router-dom'
-import './App.css'
 
 //COMPONETS
 import { Restaurants } from './components/restaurants'
 import { RestaurantsList } from './components/restaurants-list'
 import { Login } from './components/login'
 import { AddReviews } from './components/add-reviews'
+
+//ESTILOS
+import './styles/Global.css'
+import styles from './styles/App.module.css'
 
 
 function App() {
@@ -22,9 +25,9 @@ function App() {
 
   return (
     <section>
-      <nav>
-        <a href="/restaurants">Restaurants Review</a>
-        <div>
+      <nav className={ styles.Nav }>
+        {/* <a href="/restaurants">Restaurants Review</a> */}
+        <ul className={ styles.Wrapper }>
           <li>
             <Link to={ '/restaurants' }>Restaurants</Link>
           </li>
@@ -39,10 +42,10 @@ function App() {
               )
             }
           </li>
-        </div>
+        </ul>
       </nav>
 
-      <section>
+      <main>
         <Switch>
           <Route exact path={ ['/', '/restaurants'] } component={ RestaurantsList } />
         
@@ -59,7 +62,7 @@ function App() {
           )} 
           />
         </Switch>
-      </section>
+      </main>
     </section>
   );
 }

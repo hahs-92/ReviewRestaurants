@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom'
 
 import RestaurantDataService from '../services/restaurant'
 
+//ESTILOS
+import styles from '../styles/components/add-reviews.module.css'
+
+
 export const AddReviews = (props) => {
     let initialReviewState = ''
     let editing = false
@@ -39,21 +43,23 @@ export const AddReviews = (props) => {
         }
     }
     return(
-        <section>
+        <article className={ styles.AddReview }>
             {
                 props.user ? (
-                    <div>
+                    <section className={ styles.AddReviewWrapper } >
                         {
                             submitted ? (
                                 <div>
-                                    <h4>You submitted successfully¡</h4>
-                                    <Link to={ '/restaurants/' + props.match.params.id}>
-                                        Back to Restaurant
-                                    </Link>
+                                    <h2>You submitted successfully¡</h2>
+                                    <div className={ styles.Button }>
+                                        <Link to={ '/restaurants/' + props.match.params.id} >
+                                            Back to Restaurant
+                                        </Link>
+                                    </div>
                                 </div>
                             ) : (
-                                <div>
-                                    <div>
+                                <>
+                                    <div className={ styles.Inputs }>
                                         <label htmlFor="description">{ editing ? 'Edit' : 'Create' } Review</label>
                                         <input 
                                             type="text" 
@@ -64,19 +70,21 @@ export const AddReviews = (props) => {
                                             name='text'
                                             />
                                     </div>
-                                    <button onClick={ saveReview }>
-                                        Submit
-                                    </button>
-                                </div>
+                                    <div >
+                                        <button onClick={ saveReview } className={ styles.Button }>
+                                            Submit
+                                        </button>
+                                    </div>
+                                </>
                             )
                         }
-                    </div>
+                    </section>
                 ) : (
                     <div>
                         <h1>Please Login</h1>
                     </div>
                 )
             }
-        </section>
+        </article>
     )
 }
