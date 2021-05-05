@@ -62,7 +62,7 @@ export const Restaurants = (props) => {
                             </div>
                         </section>
 
-                        <h3>Reviews</h3>
+                        {/* <h3>Reviews</h3> */}
 
                         <section className={ styles.Reviews }>
                             { restaurant.reviews.length > 0 ? (

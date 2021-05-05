@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 
 //COMPONENTS
 import RestaurantDataService from '../services/restaurant'
+import { ResListSkeleton } from './res-list-skeleton'
 
 //ESTILOS
 import styles from '../styles/components/restaurants-list.module.css'
+
 
 
 export const RestaurantsList = (props) => {
@@ -175,7 +177,13 @@ export const RestaurantsList = (props) => {
                     }
                 </section>
                 : 
-                    <h1>Loading....</h1>
+                    <section className={ styles.WrapperList }>
+                       {
+                           [1,2,3,4,5,6,7,8,9,10].map(item => (
+                               <ResListSkeleton key={ item }/>
+                           ))
+                       }
+                    </section>
             }
 
         </article>
