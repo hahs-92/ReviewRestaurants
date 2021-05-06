@@ -20,7 +20,7 @@ export const RestaurantsList = (props) => {
 
     useEffect(() => {
         retrieveRestaurants()
-        retrieveCuisines()
+        // retrieveCuisines()
     }, [])
 
     const onChangeSearchName = e => {
@@ -48,14 +48,14 @@ export const RestaurantsList = (props) => {
             .catch(e => console.error(e))
     }
 
-    const retrieveCuisines = () => {
-        RestaurantDataService.getCuisines()
-            .then(response => {
-                // console.log("CUISINES: ", response.data)
-                setCuisines(['All Cuisines'].concat(response.data))
-            })
-            .catch(e => console.error(e))
-    }
+    // const retrieveCuisines = () => {
+    //     RestaurantDataService.getCuisines()
+    //         .then(response => {
+    //             // console.log("CUISINES: ", response.data)
+    //             setCuisines(['All Cuisines'].concat(response.data))
+    //         })
+    //         .catch(e => console.error(e))
+    // }
 
     // const refreshList = () => {
     //     retrieveRestaurants()
