@@ -1,4 +1,4 @@
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import styles from '../styles/components/restaurants-list.module.css'
 

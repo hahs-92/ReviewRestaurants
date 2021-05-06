@@ -27,6 +27,17 @@
     color: var(--color-complementary);
     background-color: var(--color-base);
 }
+.Button button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 35px;
+    font-size: 1.6rem;
+    color: var(--color-complementary);
+    background-color: var(--color-base);
+    border: none;
+}
 
 .Button :last-child {
     background-color: var(--color-complementary);

@@ -47,4 +47,5 @@
     background-color: var(--color-base);
     color: var(--color-complementary);
     font-size: 1.6rem;
+    cursor: pointer;
 }

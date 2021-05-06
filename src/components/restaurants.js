@@ -87,7 +87,7 @@ export const Restaurants = (props) => {
                                                             }
                                                         }}>Edit</Link>
 
-                                                        <a onClick={ () => deleteReview(review._id, index) }>Delete</a>
+                                                        <button type='button' onClick={ () => deleteReview(review._id, index) }>Delete</button>
                                                     </div>
                                                 }
                                                 
