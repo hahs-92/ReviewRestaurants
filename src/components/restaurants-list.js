@@ -13,8 +13,8 @@ import styles from '../styles/components/restaurants-list.module.css'
 export const RestaurantsList = (props) => {
     const [ restaurants, setRestaurants ] = useState([])
     const [ searchName, setSearchName ] = useState('')
-    const [ searchZip, setSearchZip ] = useState('')
-    const [ searchCuisine, setSearchCuisine ] = useState('')
+    // const [ searchZip, setSearchZip ] = useState('')
+    // const [ searchCuisine, setSearchCuisine ] = useState('')
     // const [ cuisines, setCuisines ] = useState(['All Cuisines'])
     const [ loading, setLoading ] = useState(false)
 
@@ -57,9 +57,9 @@ export const RestaurantsList = (props) => {
             .catch(e => console.error(e))
     }
 
-    const refreshList = () => {
-        retrieveRestaurants()
-    }
+    // const refreshList = () => {
+    //     retrieveRestaurants()
+    // }
 
     const find = (query, by) => {
         RestaurantDataService.find(query, by)
