@@ -34,7 +34,7 @@ function App() {
           <li>
             {
               user ? (
-                <a onClick={ logout }>
+                <a href='/' onClick={ logout }>
                   Logout { user.name}
                 </a>
               ) : (

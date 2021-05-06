@@ -15,7 +15,7 @@ export const RestaurantsList = (props) => {
     const [ searchName, setSearchName ] = useState('')
     const [ searchZip, setSearchZip ] = useState('')
     const [ searchCuisine, setSearchCuisine ] = useState('')
-    const [ cuisines, setCuisines ] = useState(['All Cuisines'])
+    // const [ cuisines, setCuisines ] = useState(['All Cuisines'])
     const [ loading, setLoading ] = useState(false)
 
     useEffect(() => {
@@ -28,15 +28,15 @@ export const RestaurantsList = (props) => {
         setSearchName(searchName)
     }
 
-    const onChangeSearchZip = e => {
-        const searchZip = e.target.value
-        setSearchZip(searchZip)
-    }
+    // const onChangeSearchZip = e => {
+    //     const searchZip = e.target.value
+    //     setSearchZip(searchZip)
+    // }
 
-    const onChangeSearchCuisine = e => {
-        const searchCuisine = e.target.value
-        setSearchCuisine(searchCuisine)
-    }
+    // const onChangeSearchCuisine = e => {
+    //     const searchCuisine = e.target.value
+    //     setSearchCuisine(searchCuisine)
+    // }
 
     const retrieveRestaurants = () => {
         RestaurantDataService.getAll()
@@ -74,17 +74,17 @@ export const RestaurantsList = (props) => {
         find(searchName, 'name')
     }
 
-    const findByZip = () => {
-        find(searchZip, 'zipcode')
-    }
+    // const findByZip = () => {
+    //     find(searchZip, 'zipcode')
+    // }
 
-    const findByCuisine = () => {
-        if(searchCuisine === 'All Cuisines') {
-            refreshList()
-        } else {
-            find(searchCuisine, 'cuisine')
-        }
-    }
+    // const findByCuisine = () => {
+    //     if(searchCuisine === 'All Cuisines') {
+    //         refreshList()
+    //     } else {
+    //         find(searchCuisine, 'cuisine')
+    //     }
+    // }
 
     return(
         <article className={ styles.Restaurants }>
