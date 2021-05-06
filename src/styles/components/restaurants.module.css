@@ -31,6 +31,7 @@
 .Button :last-child {
     background-color: var(--color-complementary);
     color: var(--color-dark);
+    cursor: pointer;
 }
 
 .Reviews {

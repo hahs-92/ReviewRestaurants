@@ -90,12 +90,15 @@ export const RestaurantsList = (props) => {
         <article className={ styles.Restaurants }>
             <section className={ styles.Wrapper } >
                 <div className={ styles.InputWrapper }>
-                    <input 
-                        type="text"
-                        placeholder='Search by name'
-                        value={ searchName }
-                        onChange={ onChangeSearchName }    
+                   <label htmlFor='search'>.
+                      <input 
+                            type="text"
+                            placeholder='Search by name'
+                            value={ searchName }
+                            onChange={ onChangeSearchName }   
+                            id='search' 
                     />
+                   </label>
                 </div>
 
                 <div className={ styles.ButtonWrapper }>

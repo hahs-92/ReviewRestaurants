@@ -16,14 +16,21 @@
     width: 100%;
 }
 
-.InputWrapper input {
+.InputWrapper label {
+    font-size: 1.8rem;
+}
+
+.InputWrapper label input {
     margin: 0;
-    padding: 0;
+    padding: 0px 8px;
     width: 100%;
     height: 35px;
+    box-sizing: border-box;
     border: none;
     cursor: pointer;
+    font-size: 1.6rem;
 }
+
 
 .ButtonWrapper {
     width: 100%;
@@ -90,5 +97,5 @@
 
 .Buttons :last-child {
     background-color: var(--color-complementary);
-    color: var(--dark);
+    color: var(--color-dark);
 }

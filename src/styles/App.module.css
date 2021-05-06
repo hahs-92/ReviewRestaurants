@@ -16,7 +16,7 @@
 
 .Wrapper li a {
     font-size: 2rem;
-    color: var(--color-dark);
+    color: var(--color-complementary);
     cursor: pointer;
 }
 
